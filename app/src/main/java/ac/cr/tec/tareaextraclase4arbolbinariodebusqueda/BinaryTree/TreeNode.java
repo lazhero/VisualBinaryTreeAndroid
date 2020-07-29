@@ -11,16 +11,17 @@ public class TreeNode {
     private static Paint highLight;
     private static Paint TextPaint;
     private Paint onScreenPaint;
-    private static int radius=70;
+    private static int radius=50;
     private int data;
     private int X_Axis;
     private int Y_Axis;
+    private int height;
     private TreeNode right,left;
     {
         TextSize=radius-10;
-        downColor=getPaint(Color.rgb(20,20,20));
+        downColor=getPaint(Color.rgb(52,0,255));
         downColor.setStyle(Paint.Style.FILL);
-        highLight=getPaint(Color.rgb(40,60,90));
+        highLight=getPaint(Color.rgb(0,255,51));
         highLight.setStyle(Paint.Style.FILL);
         linePaint=getPaint(Color.BLACK);
         TextPaint=getPaint(Color.WHITE);
@@ -31,12 +32,14 @@ public class TreeNode {
         this.data=data;
         onScreenPaint=downColor;
     }
+    public TreeNode(int data,int height){
+        this(data);
+        this.height=height;
+    }
     public void setLeft(TreeNode node){
-        if(node==null)return;
         this.left=node;
     }
     public void setRight(TreeNode node){
-        if(node==null)return;
         this.right=node;
     }
     public TreeNode getRight(){
@@ -80,8 +83,17 @@ public class TreeNode {
             left.draw(canvas);
 
         }
+        int adding=0;
+        if(data<10)adding=radius/8;
         canvas.drawCircle(X_Axis,Y_Axis,radius,onScreenPaint);
-        canvas.drawText(String.valueOf(data),X_Axis-(TextSize/2),Y_Axis+(TextSize/3),TextPaint);
+        canvas.drawText(String.valueOf(data),X_Axis-(TextSize/2)+adding,Y_Axis+(TextSize/3),TextPaint);
+    }
+
+    public void setHeight(int height){
+        this.height=height;
+    }
+    public int getHeight(){
+        return height;
     }
 
     private static Paint getPaint(int color){
@@ -91,10 +103,10 @@ public class TreeNode {
         linePaint.setColor(color);
         return linePaint;
     }
-    private static int getRadius(){
+    public static int getRadius(){
         return radius;
     }
-    private static  void setRadius(int Radius){
+    public static  void setRadius(int Radius){
         radius=Radius;
     }
     private int getDigits(){
@@ -107,4 +119,6 @@ public class TreeNode {
         }
         return returning;
     }
+
+
 }
