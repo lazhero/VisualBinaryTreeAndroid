@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:animateLayoutChanges="true"
     android:layout_height="match_parent"
+    android:background="@drawable/wallpaper"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/Init"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_pressed"
         android:onClick="init"
         android:text="Play"
         app:layout_constraintBottom_toBottomOf="parent"
