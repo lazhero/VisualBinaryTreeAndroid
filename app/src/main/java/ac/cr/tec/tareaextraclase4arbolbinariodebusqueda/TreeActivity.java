@@ -37,11 +37,17 @@ public class TreeActivity extends AppCompatActivity{
 
 
 
+
+    }
+    public  void ClearEditText(){
+        editText.setText("");
     }
     public int getInfo(){
         try{
             String text = editText.getText().toString();
+            ClearEditText();
             return Integer.parseInt(text);
+
 
         }
         catch (Exception e){
@@ -70,6 +76,7 @@ public class TreeActivity extends AppCompatActivity{
         if(data>0 && data<100) tree.delete(data);
         else callToast(inputMessage);
         running=false;
+
     }
     public void InOrder(View view){
         if(running)return;
@@ -78,10 +85,12 @@ public class TreeActivity extends AppCompatActivity{
     public void PostOrder(View view){
         if(running)return;
         inTree(tree.getPostOrder());
+
     }
     public void PreOrder(View view){
         if(running)return;
         inTree(tree.getListPreOrder());
+
     }
     public void inTree(ArrayList<TreeNode> get) {
         running=true;
